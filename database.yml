@@ -1,0 +1,22 @@
+---
+development:
+  dialect: postgres
+  database: opsd
+  user: postgres
+  password: abcd
+  host: 127.0.0.1
+  pool: 5
+
+docker:
+  dialect: postgres
+  database: opsd
+  user: postgres
+  password: abcd
+  host: db
+  pool: 5
+
+test:
+  url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/opsd_test?sslmode=disable"}}
+
+production:
+  url: {{envOr "DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/opsd_production?sslmode=disable"}}

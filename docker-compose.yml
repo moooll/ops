@@ -1,0 +1,16 @@
+version: "2"
+services:
+  db:
+    restart: always
+    image: postgres:latest
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_PASSWORD: abcd
+      POSTGRES_DB: opsd
+  web:
+    image: opsd
+    ports:
+      - "8888:8888"
+    links:
+      - db
